@@ -1,12 +1,12 @@
 import './firebaseConfig';
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
-// import MapView from 'react-native-maps';
+import {StyleSheet, Text, View} from 'react-native';
+import MapComponent from './src/components/MapComponent';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      {/* <MapView style={styles.map} /> */}
+      <MapComponent></MapComponent>
     </View>
   );
 }

@@ -1,4 +1,11 @@
 {
   "name": "SignTracker",
-  "displayName": "SignTracker"
+  "displayName": "SignTracker",
+  "android": {
+      "config": {
+        "googleMaps": {
+          "apiKey": "process.env.GOOGLE_MAPS_API_KEY"
+        }
+      }
+    }
 }
