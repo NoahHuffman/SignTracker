@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {View, StyleSheet} from 'react-native';
 import MapView, {PROVIDER_GOOGLE, Marker} from 'react-native-maps';
 
 const MapComponent = () => {
+  const [markers, setMarkers] = useState([]);
+
+  const handleMapPress = event => {
+    const coordinate = event.nativeEvent.coordinate;
+    setMarkers([...markers, coordinate]);
+  };
+
   return (
     <View style={styles.mapcontainer}>
       <MapView
@@ -13,13 +20,15 @@ const MapComponent = () => {
           longitude: -122.4324,
           latitudeDelta: 0.015,
           longitudeDelta: 0.0121,
-        }}>
-        <Marker
-          coordinate={{
-            latitude: 37.78825,
-            longitude: -122.4324,
-          }}
-        />
+        }}
+        onPress={handleMapPress}>
+        {markers.map((marker, index) => (
+          <Marker
+            key={index}
+            coordinate={marker}
+            title={`Marker ${index + 1}`}
+          />
+        ))}
       </MapView>
     </View>
   );
@@ -27,8 +36,8 @@ const MapComponent = () => {
 
 const styles = StyleSheet.create({
   mapcontainer: {
-    height: 400,
-    width: 400,
+    height: '100%',
+    width: '100%',
     justifyContent: 'flex-end',
     alignItems: 'center',
   },
