@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "319329509603",
+    "project_id": "signtracker-cbc27",
+    "storage_bucket": "signtracker-cbc27.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:319329509603:android:5dcba948ec89e6a5c365d6",
+        "android_client_info": {
+          "package_name": "com.signtracker"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCTruUh4izUQ_bbtgSEcectDUfQ1LsX0QM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
