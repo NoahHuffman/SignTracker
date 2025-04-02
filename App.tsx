@@ -2,11 +2,12 @@ import './firebaseConfig';
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import MapComponent from './src/components/MapComponent';
+import HomeScreen from './src/screens/HomeScreen';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <MapComponent></MapComponent>
+      <HomeScreen></HomeScreen>
     </View>
   );
 }
