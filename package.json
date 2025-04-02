@@ -12,9 +12,11 @@
   "dependencies": {
     "@react-native-firebase/app": "^21.13.0",
     "@react-native-firebase/auth": "^21.13.0",
+    "expo": "^52.0.42",
     "firebase": "^11.6.0",
     "react": "19.0.0",
-    "react-native": "0.78.2"
+    "react-native": "0.78.2",
+    "react-native-maps": "1.18.0"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
