@@ -1,10 +1,38 @@
-import React, {useState} from 'react';
-import {Modal, View, TextInput, Button, Image, StyleSheet} from 'react-native';
+import React, {useState, useEffect, useRef} from 'react';
+import {
+  Modal,
+  View,
+  TextInput,
+  Button,
+  Image,
+  StyleSheet,
+  Animated,
+  Easing,
+} from 'react-native';
 import {launchImageLibrary} from 'react-native-image-picker';
 
 const MarkerDetailsModal = ({isVisible, onClose, onSubmit}) => {
   const [notes, setNotes] = useState('');
   const [image, setImage] = useState(null);
+  const slideAnim = useRef(new Animated.Value(400)).current;
+
+  useEffect(() => {
+    if (isVisible) {
+      Animated.timing(slideAnim, {
+        toValue: 0,
+        duration: 500,
+        easing: Easing.inOut(Easing.ease),
+        useNativeDriver: true,
+      }).start();
+    } else {
+      Animated.timing(slideAnim, {
+        toValue: 400,
+        duration: 500,
+        easing: Easing.inOut(Easing.ease),
+        useNativeDriver: true,
+      }).start();
+    }
+  }, [isVisible, slideAnim]);
 
   const handleImagePick = () => {
     launchImageLibrary({}, response => {
@@ -23,7 +51,11 @@ const MarkerDetailsModal = ({isVisible, onClose, onSubmit}) => {
   return (
     <Modal visible={isVisible} onRequestClose={onClose} transparent={true}>
       <View style={styles.overlay}>
-        <View style={styles.modalContainer}>
+        <Animated.View
+          style={[
+            styles.modalContainer,
+            {transform: [{translateY: slideAnim}]},
+          ]}>
           <TextInput
             placeholder="Enter notes"
             value={notes}
@@ -34,7 +66,7 @@ const MarkerDetailsModal = ({isVisible, onClose, onSubmit}) => {
           {image && <Image source={{uri: image}} style={styles.image} />}
           <Button title="Submit" onPress={handleSubmit} />
           <Button title="Cancel" onPress={onClose} />
-        </View>
+        </Animated.View>
       </View>
     </Modal>
   );
@@ -48,8 +80,8 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
   },
   modalContainer: {
-    width: 300,
-    height: 400,
+    width: '80%',
+    height: '30%',
     backgroundColor: 'white',
     borderRadius: 10,
     padding: 20,
