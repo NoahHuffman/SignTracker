@@ -8,6 +8,7 @@ import {
   Animated,
   Easing,
   TouchableOpacity,
+  Image,
 } from 'react-native';
 import {launchImageLibrary} from 'react-native-image-picker';
 import FeatherIcon from 'react-native-vector-icons/Feather';
@@ -74,6 +75,10 @@ const MarkerDetailsModal = ({isVisible, onClose, onSubmit}) => {
             />
             <Text style={styles.buttonText}>Upload Image</Text>
           </TouchableOpacity>
+
+          {image && (
+            <Image source={{uri: image}} style={{width: 100, height: 100}} />
+          )}
 
           <View style={styles.buttonContainer}>
             <TouchableOpacity style={styles.cancelButton} onPress={onClose}>
