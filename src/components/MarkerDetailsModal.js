@@ -58,6 +58,7 @@ const MarkerDetailsModal = ({isVisible, onClose, onSubmit}) => {
             styles.modalContainer,
             {transform: [{translateY: slideAnim}]},
           ]}>
+          <Text style={styles.header}>Add Pin</Text>
           <TextInput
             placeholder="Add Notes"
             value={notes}
@@ -76,9 +77,7 @@ const MarkerDetailsModal = ({isVisible, onClose, onSubmit}) => {
             <Text style={styles.buttonText}>Upload Image</Text>
           </TouchableOpacity>
 
-          {image && (
-            <Image source={{uri: image}} style={{width: 100, height: 100}} />
-          )}
+          {image && <Image source={{uri: image}} style={styles.image} />}
 
           <View style={styles.buttonContainer}>
             <TouchableOpacity style={styles.cancelButton} onPress={onClose}>
@@ -103,12 +102,17 @@ const styles = StyleSheet.create({
   },
   modalContainer: {
     width: '80%',
-    height: '30%',
+    minHeight: '40%',
     backgroundColor: 'white',
     borderRadius: 10,
     padding: 20,
     elevation: 5,
-    justifyContent: 'space-between',
+  },
+  header: {
+    color: 'black',
+    fontSize: 20,
+    fontWeight: 600,
+    marginBottom: 20,
   },
   textInput: {
     marginBottom: 10,
@@ -121,7 +125,6 @@ const styles = StyleSheet.create({
   image: {
     width: 100,
     height: 100,
-    marginVertical: 10,
   },
   buttonContainer: {
     flexDirection: 'row',
