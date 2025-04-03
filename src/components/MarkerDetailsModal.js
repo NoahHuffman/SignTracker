@@ -125,13 +125,13 @@ const styles = StyleSheet.create({
   },
   imgButton: {
     backgroundColor: 'green',
-    padding: 10,
-    borderRadius: 5,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 20,
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'row',
     margin: 'auto',
-    width: 200,
   },
   uploadIcon: {
     marginRight: 6,
@@ -139,7 +139,7 @@ const styles = StyleSheet.create({
   cancelButton: {
     backgroundColor: '#e43e3e',
     padding: 10,
-    borderRadius: 5,
+    borderRadius: 20,
     alignItems: 'center',
     marginVertical: 5,
     width: 80,
@@ -147,7 +147,7 @@ const styles = StyleSheet.create({
   addButton: {
     backgroundColor: '#38a169',
     padding: 10,
-    borderRadius: 5,
+    borderRadius: 20,
     alignItems: 'center',
     marginVertical: 5,
     width: 80,
@@ -155,6 +155,7 @@ const styles = StyleSheet.create({
   buttonText: {
     color: 'white',
     fontSize: 16,
+    fontWeight: 600,
   },
 });
 
