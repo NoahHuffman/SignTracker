@@ -80,31 +80,35 @@ const MarkerDetailsModal = ({isVisible, onClose, onSubmit}) => {
           ]}>
           <Text style={styles.header}>Add Pin</Text>
           <View style={styles.imgButtonContainer}>
-            <TouchableOpacity
-              style={styles.imgButton}
-              onPress={handleCameraCapture}>
-              <FeatherIcon
-                name="camera"
-                size={20}
-                color="white"
-                style={styles.icon}
-              />
-              <Text style={styles.buttonText}>Take Photo</Text>
-            </TouchableOpacity>
+            {!image && (
+              <>
+                <TouchableOpacity
+                  style={styles.imgButton}
+                  onPress={handleCameraCapture}>
+                  <FeatherIcon
+                    name="camera"
+                    size={20}
+                    color="white"
+                    style={styles.icon}
+                  />
+                  <Text style={styles.buttonText}>Take Photo</Text>
+                </TouchableOpacity>
 
-            <Text style={styles.orText}>Or</Text>
+                <Text style={styles.orText}>Or</Text>
 
-            <TouchableOpacity
-              style={styles.imgButton}
-              onPress={handleImagePick}>
-              <FeatherIcon
-                name="upload"
-                size={20}
-                color="white"
-                style={styles.icon}
-              />
-              <Text style={styles.buttonText}>Upload Photo</Text>
-            </TouchableOpacity>
+                <TouchableOpacity
+                  style={styles.imgButton}
+                  onPress={handleImagePick}>
+                  <FeatherIcon
+                    name="upload"
+                    size={20}
+                    color="white"
+                    style={styles.icon}
+                  />
+                  <Text style={styles.buttonText}>Upload Photo</Text>
+                </TouchableOpacity>
+              </>
+            )}
           </View>
 
           {image && (
@@ -187,7 +191,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   removeButton: {
-    padding: 5,
+    paddingRight: 10,
   },
   buttonContainer: {
     flexDirection: 'row',
