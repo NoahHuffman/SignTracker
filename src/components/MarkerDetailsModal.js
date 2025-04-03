@@ -83,26 +83,33 @@ const MarkerDetailsModal = ({isVisible, onClose, onSubmit}) => {
             multiline={true}
             textAlignVertical="top"
           />
-          <TouchableOpacity style={styles.imgButton} onPress={handleImagePick}>
-            <FeatherIcon
-              name="upload"
-              size={20}
-              color="white"
-              style={styles.uploadIcon}
-            />
-            <Text style={styles.buttonText}>Upload Photo</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.imgButton}
-            onPress={handleCameraCapture}>
-            <FeatherIcon
-              name="camera"
-              size={20}
-              color="white"
-              style={styles.uploadIcon}
-            />
-            <Text style={styles.buttonText}>Take Photo</Text>
-          </TouchableOpacity>
+          <View style={styles.imgButtonContainer}>
+            <TouchableOpacity
+              style={styles.imgButton}
+              onPress={handleCameraCapture}>
+              <FeatherIcon
+                name="camera"
+                size={20}
+                color="white"
+                style={styles.icon}
+              />
+              <Text style={styles.buttonText}>Take Photo</Text>
+            </TouchableOpacity>
+
+            <Text style={styles.orText}>Or</Text>
+
+            <TouchableOpacity
+              style={styles.imgButton}
+              onPress={handleImagePick}>
+              <FeatherIcon
+                name="upload"
+                size={20}
+                color="white"
+                style={styles.icon}
+              />
+              <Text style={styles.buttonText}>Upload Photo</Text>
+            </TouchableOpacity>
+          </View>
 
           {image && <Image source={{uri: image}} style={styles.image} />}
 
@@ -158,19 +165,23 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginHorizontal: 30,
   },
-
+  imgButtonContainer: {
+    marginHorizontal: 0,
+  },
   imgButton: {
     backgroundColor: 'green',
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderRadius: 20,
-    alignItems: 'center',
-    justifyContent: 'center',
     flexDirection: 'row',
     margin: 'auto',
   },
-  uploadIcon: {
+  icon: {
     marginRight: 6,
+  },
+  orText: {
+    margin: 'auto',
+    marginVertical: 5,
   },
   cancelButton: {
     backgroundColor: '#e43e3e',
