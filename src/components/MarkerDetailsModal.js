@@ -3,7 +3,6 @@ import {
   Modal,
   View,
   TextInput,
-  Button,
   Text,
   StyleSheet,
   Animated,
@@ -11,6 +10,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {launchImageLibrary} from 'react-native-image-picker';
+import FeatherIcon from 'react-native-vector-icons/Feather';
 
 const MarkerDetailsModal = ({isVisible, onClose, onSubmit}) => {
   const [notes, setNotes] = useState('');
@@ -66,9 +66,14 @@ const MarkerDetailsModal = ({isVisible, onClose, onSubmit}) => {
             textAlignVertical="top"
           />
           <TouchableOpacity style={styles.imgButton} onPress={handleImagePick}>
-            <Text style={styles.buttonText}>Select Image</Text>
+            <FeatherIcon
+              name="upload"
+              size={20}
+              color="white"
+              style={styles.uploadIcon}
+            />
+            <Text style={styles.buttonText}>Upload Image</Text>
           </TouchableOpacity>
-          {/* {image && <Image source={{uri: image}} style={styles.image} />} */}
 
           <View style={styles.buttonContainer}>
             <TouchableOpacity style={styles.cancelButton} onPress={onClose}>
@@ -119,10 +124,17 @@ const styles = StyleSheet.create({
     marginHorizontal: 30,
   },
   imgButton: {
-    backgroundColor: '#e1e8f0',
+    backgroundColor: 'green',
     padding: 10,
     borderRadius: 5,
     alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'row',
+    margin: 'auto',
+    width: 200,
+  },
+  uploadIcon: {
+    marginRight: 6,
   },
   cancelButton: {
     backgroundColor: '#e43e3e',

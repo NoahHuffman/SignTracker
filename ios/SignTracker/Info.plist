@@ -52,5 +52,11 @@
 	<string>Your location is needed to show the map.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Your location is needed to show the map.</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>FontAwesome.ttf</string>
+		<string>MaterialIcons.ttf</string>
+		<string>Feather.ttf</string>
+	</array>
 </dict>
 </plist>
