@@ -54,7 +54,7 @@ const MapComponent = () => {
   };
 
   return (
-    <View style={styles.mapcontainer}>
+    <View style={styles.mapContainer}>
       <MapView
         provider={PROVIDER_GOOGLE}
         style={styles.map}
@@ -93,7 +93,7 @@ const MapComponent = () => {
 };
 
 const styles = StyleSheet.create({
-  mapcontainer: {
+  mapContainer: {
     height: '100%',
     width: '100%',
     justifyContent: 'flex-end',
