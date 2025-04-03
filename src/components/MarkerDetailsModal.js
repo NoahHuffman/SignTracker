@@ -64,8 +64,11 @@ const MarkerDetailsModal = ({isVisible, onClose, onSubmit}) => {
           />
           <Button title="Select Image" onPress={handleImagePick} />
           {image && <Image source={{uri: image}} style={styles.image} />}
-          <Button title="Submit" onPress={handleSubmit} />
-          <Button title="Cancel" onPress={onClose} />
+
+          <View style={styles.buttonContainer}>
+            <Button title="Cancel" onPress={onClose} />
+            <Button title="Submit" onPress={handleSubmit} />
+          </View>
         </Animated.View>
       </View>
     </Modal>
@@ -86,6 +89,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     padding: 20,
     elevation: 5,
+    justifyContent: 'space-between',
   },
   textInput: {
     marginBottom: 10,
@@ -98,6 +102,10 @@ const styles = StyleSheet.create({
     width: 100,
     height: 100,
     marginVertical: 10,
+  },
+  buttonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
 });
 
