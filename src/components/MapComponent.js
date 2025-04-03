@@ -1,44 +1,7 @@
 import React, {useState} from 'react';
-import {View, StyleSheet, Modal, TextInput, Button, Image} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 import MapView, {PROVIDER_GOOGLE, Marker} from 'react-native-maps';
-import {launchImageLibrary} from 'react-native-image-picker';
-
-const MarkerDetailsModal = ({isVisible, onClose, onSubmit}) => {
-  const [notes, setNotes] = useState('');
-  const [image, setImage] = useState(null);
-
-  const handleImagePick = () => {
-    launchImageLibrary({}, response => {
-      if (response.assets && response.assets.length > 0) {
-        setImage(response.assets[0].uri);
-      }
-    });
-  };
-
-  const handleSubmit = () => {
-    onSubmit(notes, image);
-    setNotes('');
-    setImage(null);
-  };
-
-  return (
-    <Modal visible={isVisible} onRequestClose={onClose}>
-      <View>
-        <TextInput
-          placeholder="Enter notes"
-          value={notes}
-          onChangeText={setNotes}
-        />
-        <Button title="Select Image" onPress={handleImagePick} />
-        {image && (
-          <Image source={{uri: image}} style={{width: 100, height: 100}} />
-        )}
-        <Button title="Submit" onPress={handleSubmit} />
-        <Button title="Cancel" onPress={onClose} />
-      </View>
-    </Modal>
-  );
-};
+import MarkerDetailsModal from './MarkerDetailsModal';
 
 const MapComponent = () => {
   const [markers, setMarkers] = useState([]);
