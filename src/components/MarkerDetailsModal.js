@@ -65,17 +65,17 @@ const MarkerDetailsModal = ({isVisible, onClose, onSubmit}) => {
             multiline={true}
             textAlignVertical="top"
           />
-          <TouchableOpacity style={styles.button} onPress={handleImagePick}>
+          <TouchableOpacity style={styles.imgButton} onPress={handleImagePick}>
             <Text style={styles.buttonText}>Select Image</Text>
           </TouchableOpacity>
           {/* {image && <Image source={{uri: image}} style={styles.image} />} */}
 
           <View style={styles.buttonContainer}>
-            <TouchableOpacity style={styles.button} onPress={onClose}>
+            <TouchableOpacity style={styles.cancelButton} onPress={onClose}>
               <Text style={styles.buttonText}>Cancel</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.button} onPress={handleSubmit}>
-              <Text style={styles.buttonText}>Add Pin</Text>
+            <TouchableOpacity style={styles.addButton} onPress={handleSubmit}>
+              <Text style={styles.buttonText}>Save</Text>
             </TouchableOpacity>
           </View>
         </Animated.View>
@@ -116,13 +116,29 @@ const styles = StyleSheet.create({
   buttonContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    marginHorizontal: 30,
   },
-  button: {
-    backgroundColor: 'green',
+  imgButton: {
+    backgroundColor: '#e1e8f0',
+    padding: 10,
+    borderRadius: 5,
+    alignItems: 'center',
+  },
+  cancelButton: {
+    backgroundColor: '#e43e3e',
     padding: 10,
     borderRadius: 5,
     alignItems: 'center',
     marginVertical: 5,
+    width: 80,
+  },
+  addButton: {
+    backgroundColor: '#38a169',
+    padding: 10,
+    borderRadius: 5,
+    alignItems: 'center',
+    marginVertical: 5,
+    width: 80,
   },
   buttonText: {
     color: 'white',
