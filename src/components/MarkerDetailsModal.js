@@ -10,7 +10,7 @@ import {
   TouchableOpacity,
   Image,
 } from 'react-native';
-import {launchImageLibrary} from 'react-native-image-picker';
+import {launchImageLibrary, launchCamera} from 'react-native-image-picker';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 
 const MarkerDetailsModal = ({isVisible, onClose, onSubmit}) => {
@@ -37,7 +37,23 @@ const MarkerDetailsModal = ({isVisible, onClose, onSubmit}) => {
   }, [isVisible, slideAnim]);
 
   const handleImagePick = () => {
-    launchImageLibrary({}, response => {
+    const options = {
+      mediaType: 'photo',
+      includeBase64: false,
+    };
+    launchImageLibrary(options, response => {
+      if (response.assets && response.assets.length > 0) {
+        setImage(response.assets[0].uri);
+      }
+    });
+  };
+
+  const handleCameraCapture = () => {
+    const options = {
+      mediaType: 'photo',
+      includeBase64: false,
+    };
+    launchCamera(options, response => {
       if (response.assets && response.assets.length > 0) {
         setImage(response.assets[0].uri);
       }
@@ -74,7 +90,18 @@ const MarkerDetailsModal = ({isVisible, onClose, onSubmit}) => {
               color="white"
               style={styles.uploadIcon}
             />
-            <Text style={styles.buttonText}>Upload Image</Text>
+            <Text style={styles.buttonText}>Upload Photo</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.imgButton}
+            onPress={handleCameraCapture}>
+            <FeatherIcon
+              name="camera"
+              size={20}
+              color="white"
+              style={styles.uploadIcon}
+            />
+            <Text style={styles.buttonText}>Take Photo</Text>
           </TouchableOpacity>
 
           {image && <Image source={{uri: image}} style={styles.image} />}
@@ -111,7 +138,7 @@ const styles = StyleSheet.create({
   header: {
     color: 'black',
     fontSize: 20,
-    fontWeight: 600,
+    fontWeight: '600',
     marginBottom: 20,
   },
   textInput: {
@@ -131,6 +158,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginHorizontal: 30,
   },
+
   imgButton: {
     backgroundColor: 'green',
     paddingVertical: 10,
