@@ -4,10 +4,11 @@ import {
   View,
   TextInput,
   Button,
-  Image,
+  Text,
   StyleSheet,
   Animated,
   Easing,
+  TouchableOpacity,
 } from 'react-native';
 import {launchImageLibrary} from 'react-native-image-picker';
 
@@ -57,19 +58,25 @@ const MarkerDetailsModal = ({isVisible, onClose, onSubmit}) => {
             {transform: [{translateY: slideAnim}]},
           ]}>
           <TextInput
-            placeholder="Add notes"
+            placeholder="Add Notes"
             value={notes}
             onChangeText={setNotes}
             style={styles.textInput}
             multiline={true}
             textAlignVertical="top"
           />
-          <Button title="Select image" onPress={handleImagePick} />
-          {image && <Image source={{uri: image}} style={styles.image} />}
+          <TouchableOpacity style={styles.button} onPress={handleImagePick}>
+            <Text style={styles.buttonText}>Select Image</Text>
+          </TouchableOpacity>
+          {/* {image && <Image source={{uri: image}} style={styles.image} />} */}
 
           <View style={styles.buttonContainer}>
-            <Button title="Cancel" onPress={onClose} />
-            <Button title="Add pin" onPress={handleSubmit} />
+            <TouchableOpacity style={styles.button} onPress={onClose}>
+              <Text style={styles.buttonText}>Cancel</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.button} onPress={handleSubmit}>
+              <Text style={styles.buttonText}>Add Pin</Text>
+            </TouchableOpacity>
           </View>
         </Animated.View>
       </View>
@@ -109,6 +116,17 @@ const styles = StyleSheet.create({
   buttonContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+  },
+  button: {
+    backgroundColor: 'green',
+    padding: 10,
+    borderRadius: 5,
+    alignItems: 'center',
+    marginVertical: 5,
+  },
+  buttonText: {
+    color: 'white',
+    fontSize: 16,
   },
 });
 
