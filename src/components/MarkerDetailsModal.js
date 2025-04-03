@@ -66,6 +66,10 @@ const MarkerDetailsModal = ({isVisible, onClose, onSubmit}) => {
     setImage(null);
   };
 
+  const handleRemoveImage = () => {
+    setImage(null);
+  };
+
   return (
     <Modal visible={isVisible} onRequestClose={onClose} transparent={true}>
       <View style={styles.overlay}>
@@ -103,7 +107,16 @@ const MarkerDetailsModal = ({isVisible, onClose, onSubmit}) => {
             </TouchableOpacity>
           </View>
 
-          {image && <Image source={{uri: image}} style={styles.image} />}
+          {image && (
+            <View style={styles.imageContainer}>
+              <Image source={{uri: image}} style={styles.image} />
+              <TouchableOpacity
+                style={styles.removeButton}
+                onPress={handleRemoveImage}>
+                <FeatherIcon name="trash" size={20} color="red" />
+              </TouchableOpacity>
+            </View>
+          )}
 
           <TextInput
             placeholder="Add Notes"
@@ -133,7 +146,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    backgroundColor: 'rgba(0, 0, 0, 0.  5)',
   },
   modalContainer: {
     width: '80%',
@@ -157,9 +170,24 @@ const styles = StyleSheet.create({
     padding: 10,
     height: 100,
   },
+  imageContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginVertical: 10,
+    borderWidth: 1,
+    borderColor: '#ccc',
+    borderRadius: 5,
+    padding: 5,
+    backgroundColor: '#f9f9f9',
+  },
   image: {
-    width: 100,
-    height: 100,
+    width: 50,
+    height: 50,
+    borderRadius: 5,
+  },
+  removeButton: {
+    padding: 5,
   },
   buttonContainer: {
     flexDirection: 'row',
@@ -203,7 +231,7 @@ const styles = StyleSheet.create({
   buttonText: {
     color: 'white',
     fontSize: 16,
-    fontWeight: 600,
+    fontWeight: '600',
   },
 });
 
