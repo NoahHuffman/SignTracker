@@ -57,17 +57,19 @@ const MarkerDetailsModal = ({isVisible, onClose, onSubmit}) => {
             {transform: [{translateY: slideAnim}]},
           ]}>
           <TextInput
-            placeholder="Enter notes"
+            placeholder="Add notes"
             value={notes}
             onChangeText={setNotes}
             style={styles.textInput}
+            multiline={true}
+            textAlignVertical="top"
           />
-          <Button title="Select Image" onPress={handleImagePick} />
+          <Button title="Select image" onPress={handleImagePick} />
           {image && <Image source={{uri: image}} style={styles.image} />}
 
           <View style={styles.buttonContainer}>
             <Button title="Cancel" onPress={onClose} />
-            <Button title="Submit" onPress={handleSubmit} />
+            <Button title="Add pin" onPress={handleSubmit} />
           </View>
         </Animated.View>
       </View>
@@ -97,6 +99,7 @@ const styles = StyleSheet.create({
     borderColor: '#ccc',
     borderRadius: 5,
     padding: 10,
+    height: 100,
   },
   image: {
     width: 100,
